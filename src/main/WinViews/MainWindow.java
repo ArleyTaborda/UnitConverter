@@ -1,11 +1,21 @@
 package main.WinViews;
 
-import main.controllers.CurrencyController;
+import javax.swing.*;
 
 public class MainWindow {
     public static void main(String[] args) {
+        Window window = new Window();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
+        window.setResizable(false);
+        window.setLocationRelativeTo(null);
+        window.setSize(600, 400);
 
-        CurrencyController.convert();
+        window.setTitle("Conversor de unidades");
+
+
+        //      ;CurrencyController.convert();
 
     }
+
 }

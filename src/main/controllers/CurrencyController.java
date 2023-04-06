@@ -7,32 +7,21 @@ import java.util.Scanner;
 
 public class CurrencyController {
 
-    public static void convert() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Seleccione el tipo de conversión: ");
-        System.out.println("1. Monedas");
-        System.out.println("2. Distancia");
-        System.out.println("3. Temperatura");
-        System.out.println("4. Peso");
-        System.out.println("5. Area");
-
-        int selection = input.nextInt();
-
-        switch (selection){
-            case 1:
+    public static void convert(String type) {
+        switch (type){
+            case "Divisas":
                 currencyConversion();
                 break;
-            case 2:
+            case "Longitud":
                 distanceConversion();
                 break;
-            case 3:
+            case "Temperatura":
                 temperatureConversion();
                 break;
-            case 4:
+            case "Peso":
                 weightConversion();
                 break;
-            case 5:
+            case "Area":
                 areaConversion();
                 break;
             default:
@@ -43,7 +32,7 @@ public class CurrencyController {
     public static void distanceConversion(){
         Scanner input = new Scanner(System.in);
 
-        String[] units = {"Milimetros: km", "Centrimetros: cm", "Metros: m", "Kilometros: km", "Pulgadas: in", "Pies: ft", "Yardas: yd", "Millas: mi"};
+        String[] units = {"Milimetros: mm", "Centrimetros: cm", "Metros: m", "Kilometros: km", "Pulgadas: in", "Pies: ft", "Yardas: yd", "Millas: mi"};
 
         System.out.println("Por favor selecciona la unidad de medida: ");
         System.out.println(Arrays.toString(units));

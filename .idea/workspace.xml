@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d6c2fed-ac59-469e-9c2c-656cdd4a9432" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UnitConverter.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/ApiRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/AreaConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/CurrencyConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/DistanceConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/TemperatureConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/WeightConverter.java" afterDir="false" />
+    <list default="true" id="9d6c2fed-ac59-469e-9c2c-656cdd4a9432" name="Changes" comment="Primer commit que contiene los modelos y el controlador">
+      <change afterPath="$PROJECT_DIR$/src/main/WinViews/Window.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/WinViews/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Areas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Longitudes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Pesos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Temperatures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Units.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -42,7 +39,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="2NA6mgpFh4KN46rDzLz721zc1jQ" />
@@ -51,18 +48,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/arley/Documentos/java/dependencies/json-20230227.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/arley/Documentos/java/dependencies/json-20230227.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,7 +70,19 @@
       <option name="presentableId" value="Default" />
       <updated>1679094702129</updated>
     </task>
+    <task id="LOCAL-00001" summary="Primer commit que contiene los modelos y el controlador">
+      <created>1679697248278</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679697248278</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Primer commit que contiene los modelos y el controlador" />
+    <option name="LAST_COMMIT_MESSAGE" value="Primer commit que contiene los modelos y el controlador" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
