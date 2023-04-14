@@ -3,7 +3,7 @@ package main.models.enums;
 public enum Pesos {
     gr("Gramos"),
     lb("Libras"),
-    k("Kilos"),
+    kl("Kilos"),
     oz("Onzas"),
     tn("Toneladas");
 

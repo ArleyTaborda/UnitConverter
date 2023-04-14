@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d6c2fed-ac59-469e-9c2c-656cdd4a9432" name="Changes" comment="Primer commit que contiene los modelos y el controlador">
-      <change afterPath="$PROJECT_DIR$/src/main/WinViews/Window.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/WinViews/Window.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Areas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Longitudes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Pesos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Temperatures.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/models/enums/Units.java" afterDir="false" />
+    <list default="true" id="9d6c2fed-ac59-469e-9c2c-656cdd4a9432" name="Changes" comment="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones">
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/WinViews/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/WinViews/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/models/enums/Areas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/enums/Areas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/models/enums/Pesos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/enums/Pesos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,12 +74,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679697248278</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones">
+      <created>1680816877490</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680816877490</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primer commit que contiene los modelos y el controlador" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primer commit que contiene los modelos y el controlador" />
+    <MESSAGE value="Se agrega interfaz (con diseño temporal)" />
+    <MESSAGE value="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -14,8 +14,6 @@ public class MainWindow {
         window.setTitle("Conversor de unidades");
 
 
-        //      ;CurrencyController.convert();
-
     }
 
 }

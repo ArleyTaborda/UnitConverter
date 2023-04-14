@@ -1,5 +1,6 @@
 package main.WinViews;
 
+import main.controllers.CurrencyController;
 import main.models.enums.*;
 
 import javax.swing.*;
@@ -7,9 +8,20 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Window extends JFrame {
+    private String selectedType;
+    private String fromSelection;
+    private String toSelection;
+    private float inValue;
+    private float outVlaue;
+    String fromUnitKey;
+    String toUnitKey;
     private JPanel contentPane;
     private JPanel conversionPane;
     private JPanel unitsPanel;
@@ -25,16 +37,22 @@ public class Window extends JFrame {
     private JButton btnConvertir;
     private JButton btnSalir;
 
+    Color azul = new Color(49,37,202);
+    Color violeta = new Color(65,12,130);
+    Color violetaClaro = new Color(148,110,255);
+    Color dorado = new Color(186,169,39);
+    Color doradoClaro = new Color(255, 241, 121);
+
     public Window() {
         /*----------------------WINDOW----------------------*/
-        setBackground(new Color(51, 0, 102));
+        setBackground(violeta);
         setType(Type.UTILITY);
         setTitle("Conversor de Unidades");
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 400);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(51, 0, 102));
+        contentPane.setBackground(violeta);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         /*----------------------CONTENT PANEL----------------------*/
@@ -42,7 +60,7 @@ public class Window extends JFrame {
         contentPane.setLayout(null);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(51, 0, 53));
+        panel.setBackground(violeta);
         panel.setBounds(10, 10, 570, 350);
         contentPane.add(panel);
         panel.setLayout(null);
@@ -53,8 +71,8 @@ public class Window extends JFrame {
         ConvLabel.setForeground(Color.white);
         panel.add(ConvLabel);
 
-        JComboBox ConversionType = new JComboBox();
-        ConversionType.setModel(new DefaultComboBoxModel(new String[]{"Divisas", "Temperatura", "Longitud", "Area", "Peso"}));
+        JComboBox<String> ConversionType = new JComboBox<>();
+        ConversionType.setModel(new DefaultComboBoxModel<>(new String[]{"Divisas", "Temperatura", "Longitud", "Area", "Peso"}));
         ConversionType.setSelectedIndex(-1);
         ConversionType.setToolTipText("");
         ConversionType.setBounds(340, 15, 220, 22);
@@ -65,19 +83,19 @@ public class Window extends JFrame {
         /* ----------------------CONVERSION PANEL----------------------*/
         JPanel conversionPane = new JPanel();
         conversionPane.setBounds(0,55,570,240);
-        conversionPane.setBackground(new Color(60,0,70));
+        conversionPane.setBackground(violeta);
         conversionPane.setLayout(new GridLayout(1,0,0,0));
         panel.add(conversionPane);
 
         /*-----------------------UNITS PANEL-----------------------*/
         JPanel unitsPanel = new JPanel();
         unitsPanel.setBounds(0, 0, 570, 240);
-        unitsPanel.setBackground(new Color(100,40, 100));
+        unitsPanel.setBackground(violeta);
         unitsPanel.setLayout(new GridLayout(1, 2, 0,0));
         conversionPane.add(unitsPanel);
         /*-----------------------FROM PANEL-----------------------*/
         JPanel fromPanel = new JPanel();
-        fromPanel.setBackground(new Color(40,40,80));
+        fromPanel.setBackground(violeta);
         fromPanel.setLayout(null);
         unitsPanel.add(fromPanel);
 
@@ -87,7 +105,7 @@ public class Window extends JFrame {
         fromLabel.setForeground(Color.white);
         fromPanel.add(fromLabel);
 
-        JComboBox fromUnitBox = new JComboBox();
+        JComboBox<String> fromUnitBox = new JComboBox<String>();
         fromUnitBox.setBounds(12,70,260,24);
         fromPanel.add(fromUnitBox);
 
@@ -101,7 +119,7 @@ public class Window extends JFrame {
 
         /*-----------------------TO PANEL-----------------------*/
         JPanel toPanel = new JPanel();
-        toPanel.setBackground(new Color(80,40,40));
+        toPanel.setBackground(violeta);
         toPanel.setLayout(null);
         unitsPanel.add(toPanel);
 
@@ -111,7 +129,7 @@ public class Window extends JFrame {
         toLabel.setForeground(Color.white);
         toPanel.add(toLabel);
 
-        JComboBox toUnitBox = new JComboBox();
+        JComboBox<String> toUnitBox = new JComboBox<String>();
         toUnitBox.setBounds(12,70,260,24);
         toPanel.add(toUnitBox);
 
@@ -124,7 +142,6 @@ public class Window extends JFrame {
         toPanel.add(toTextArea);
 
 
-
         /* ----------------------BUTTON SECTION----------------------*/
         JPanel buttonsPane = new JPanel();
         buttonsPane.setBackground(new Color(51, 0, 80));
@@ -134,15 +151,27 @@ public class Window extends JFrame {
         buttonsPane.setLayout(new GridLayout(0, 2, 0, 0));
 
         JButton btnConvertir = new JButton("Convertir");
-        btnConvertir.setBackground(new Color(0, 0, 0));
-        btnConvertir.setForeground(new Color(51, 0, 102));
+        btnConvertir.setBackground(azul);
+        btnConvertir.setForeground(doradoClaro);
         btnConvertir.setFont(new Font("Liberation Sans", Font.PLAIN, 14));
+        btnConvertir.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnConvertir.setBackground(dorado);
+                btnConvertir.setForeground(new Color(60,10,60));
+            }
 
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnConvertir.setBackground(azul);
+                btnConvertir.setForeground(doradoClaro);
+            }
+        });
         buttonsPane.add(btnConvertir);
 
         JButton btnSalir = new JButton("Salir");
-        btnSalir.setBackground(new Color(0, 0, 0));
-        btnSalir.setForeground(new Color(51, 0, 102));
+        btnSalir.setBackground(azul);
+        btnSalir.setForeground(doradoClaro);
         btnSalir.setFont(new Font("Liberation Sans", Font.PLAIN, 14));
         btnSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -152,63 +181,196 @@ public class Window extends JFrame {
         buttonsPane.add(btnSalir);
 
 
-
-
         ConversionType.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedType = (String) ConversionType.getSelectedItem();
+                String fromKey = "";
 
-                switch (selectedType){
-                    case "Divisas":
-                        ArrayList<String> nombreUnidades = new ArrayList<String>();
-                        for (Units unidad : Units.values()){
+                ArrayList<String> nombreUnidades = new ArrayList<String>();
+
+                switch (Objects.requireNonNull(selectedType)) {
+                    case "Divisas" -> {
+
+                        for (Units unidad : Units.values()) {
                             nombreUnidades.add(unidad.getNombre());
                         }
-                        fromUnitBox.setModel(new DefaultComboBoxModel(nombreUnidades.toArray(new String[0])));
-                        toUnitBox.setModel(new DefaultComboBoxModel(nombreUnidades.toArray(new String[0])));
-                        break;
-                    case "Temperatura":
-                        ArrayList<String> nombreTemp = new ArrayList<String>();
-                        for (Temperatures unidad : Temperatures.values()){
-                            nombreTemp.add(unidad.getNombre());
+                        System.out.println(nombreUnidades);
+                        fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        fromUnitBox.setSelectedIndex(0);
+                        toUnitBox.setSelectedIndex(0);
+                    }
+                    case "Temperatura" -> {
+                        for (Temperatures unidad : Temperatures.values()) {
+                            nombreUnidades.add(unidad.getNombre());
                         }
-                        fromUnitBox.setModel(new DefaultComboBoxModel(nombreTemp.toArray(new String[0])));
-                        toUnitBox.setModel(new DefaultComboBoxModel(nombreTemp.toArray(new String[0])));
-                        break;
-                    case "Longitud":
-                        ArrayList<String> nombreLongitud = new ArrayList<String>();
-                        for (Longitudes unidad : Longitudes.values()){
-                            nombreLongitud.add(unidad.getNombre());
+                        System.out.println(nombreUnidades);
+                        System.out.println(fromKey);
+                        fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        fromUnitBox.setSelectedIndex(0);
+                        toUnitBox.setSelectedIndex(0);
+                    }
+                    case "Longitud" -> {
+                        for (Longitudes unidad : Longitudes.values()) {
+                            nombreUnidades.add(unidad.getNombre());
                         }
-                        fromUnitBox.setModel(new DefaultComboBoxModel(nombreLongitud.toArray(new String[0])));
-                        toUnitBox.setModel(new DefaultComboBoxModel(nombreLongitud.toArray(new String[0])));
-                        break;
-                    case "Area":
-                        ArrayList<String> nombreArea = new ArrayList<String>();
-                        for (Areas unidad : Areas.values()){
-                            nombreArea.add(unidad.getNombre());
+                        System.out.println(nombreUnidades);
+                        fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        fromUnitBox.setSelectedIndex(0);
+                        toUnitBox.setSelectedIndex(0);
+                    }
+                    case "Area" -> {
+                        for (Areas unidad : Areas.values()) {
+                            nombreUnidades.add(unidad.getNombre());
                         }
-                        fromUnitBox.setModel(new DefaultComboBoxModel(nombreArea.toArray(new String[0])));
-                        toUnitBox.setModel(new DefaultComboBoxModel(nombreArea.toArray(new String[0])));
-                        break;
-                    case "Peso":
-                        ArrayList<String> nombrePeso = new ArrayList<String>();
-                        for (Pesos unidad : Pesos.values()){
-                            nombrePeso.add(unidad.getNombre());
+                        fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        fromUnitBox.setSelectedIndex(0);
+                        toUnitBox.setSelectedIndex(0);
+                        System.out.println(nombreUnidades);
+                    }
+                    case "Peso" -> {
+                        for (Pesos unidad : Pesos.values()) {
+                            nombreUnidades.add(unidad.getNombre());
                         }
-                        fromUnitBox.setModel(new DefaultComboBoxModel(nombrePeso.toArray(new String[0])));
-                        toUnitBox.setModel(new DefaultComboBoxModel(nombrePeso.toArray(new String[0])));
-                        break;
+                        fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
+                        fromUnitBox.setSelectedIndex(0);
+                        toUnitBox.setSelectedIndex(0);
+
+                        System.out.println(nombreUnidades);
+                    }
+                    default -> {
+
+                    }
+                }
+            }
+        });
+
+
+        fromUnitBox.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String fromSelectedUnit = (String) fromUnitBox.getSelectedItem();
+                selectedType = (String) ConversionType.getSelectedItem();
+                System.out.println(fromSelectedUnit);
+                System.out.println(selectedType);
+
+                switch (Objects.requireNonNull(selectedType)) {
+                    case "Divisas" -> {
+                        for (Units unidad : Units.values()) {
+                            if (unidad.getNombre().equals(fromSelectedUnit)) {
+                                fromUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(fromUnitKey);
+                    }
+                    case "Temperatura" -> {
+                        for (Temperatures unidad : Temperatures.values()) {
+                            if (unidad.getNombre().equals(fromSelectedUnit)) {
+                                fromUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(fromUnitKey);
+                    }
+                    case "Longitud" -> {
+                        for (Longitudes unidad : Longitudes.values()) {
+                            if (unidad.getNombre().equals(fromSelectedUnit)) {
+                                fromUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(fromUnitKey);
+                    }
+                    case "Area" -> {
+                        for (Areas unidad : Areas.values()) {
+                            if (unidad.getNombre().equals(fromSelectedUnit)) {
+                                fromUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(fromUnitKey);
+                    }
+                    case "Peso" -> {
+                        for (Pesos unidad : Pesos.values()) {
+                            if (unidad.getNombre().equals(fromSelectedUnit)) {
+                                fromUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(fromUnitKey);
+                    }
+
+                }
+                }
+        });
+
+        toUnitBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String toSeletedUnit = (String) toUnitBox.getSelectedItem();
+                selectedType = (String) ConversionType.getSelectedItem();
+
+
+                switch (Objects.requireNonNull(selectedType)) {
+                    case "Divisas" -> {
+                        for (Units unidad : Units.values()) {
+                            if (unidad.getNombre().equals(toSeletedUnit)) {
+                                toUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(toUnitKey);
+                    }
+                    case "Temperatura" -> {
+                        for (Temperatures unidad : Temperatures.values()) {
+                            if (unidad.getNombre().equals(toSeletedUnit)) {
+                                toUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(toUnitKey);
+                    }
+                    case "Longitud" -> {
+                        for (Longitudes unidad : Longitudes.values()) {
+                            if (unidad.getNombre().equals(toSeletedUnit)) {
+                                toUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(toUnitKey);
+                    }
+                    case "Area" -> {
+                        for (Areas unidad : Areas.values()) {
+                            if (unidad.getNombre().equals(toSeletedUnit)) {
+                                toUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(toUnitKey);
+                    }
+                    case "Peso" -> {
+                        for (Pesos unidad : Pesos.values()) {
+                            if (unidad.getNombre().equals(toSeletedUnit)) {
+                                toUnitKey = unidad.name();
+                            }
+                        }
+                        System.out.println(toUnitKey);
+                    }
 
                 }
 
             }
         });
-
-        fromUnitBox.addActionListener(new ActionListener() {
+        btnConvertir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                DecimalFormat df = new DecimalFormat("#.00");
+                fromSelection = fromUnitKey;
+                toSelection = toUnitKey;
+                inValue = Float.parseFloat(fromTextArea.getText());
+
+                outVlaue = (float) CurrencyController.convert(selectedType, inValue, fromSelection, toSelection);
+                outVlaue = Float.parseFloat(df.format(outVlaue));
+                toTextArea.setText(String.valueOf(outVlaue));
 
             }
         });

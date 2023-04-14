@@ -2,158 +2,83 @@ package main.controllers;
 
 import main.models.*;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class CurrencyController {
 
-    public static void convert(String type) {
-        switch (type){
-            case "Divisas":
-                currencyConversion();
-                break;
-            case "Longitud":
-                distanceConversion();
-                break;
-            case "Temperatura":
-                temperatureConversion();
-                break;
-            case "Peso":
-                weightConversion();
-                break;
-            case "Area":
-                areaConversion();
-                break;
-            default:
-                System.out.println("Por favor selecciona un tipo de conversión.");
+    public static double convert(String type, double value, String fromUnit, String toUnit) {
+        double result = 0;
+        switch (type) {
+            case "Divisas" -> result = currencyConversion(value, fromUnit, toUnit);
+            case "Longitud" -> result = distanceConversion(value, fromUnit, toUnit);
+            case "Temperatura" -> result = temperatureConversion(value, fromUnit, toUnit);
+            case "Peso" -> result = weightConversion(value, fromUnit, toUnit);
+            case "Area" -> result = areaConversion(value, fromUnit, toUnit);
+            default -> System.out.println("Por favor selecciona un tipo de conversión.");
         }
+        return result;
     }
 
-    public static void distanceConversion(){
-        Scanner input = new Scanner(System.in);
 
-        String[] units = {"Milimetros: mm", "Centrimetros: cm", "Metros: m", "Kilometros: km", "Pulgadas: in", "Pies: ft", "Yardas: yd", "Millas: mi"};
-
-        System.out.println("Por favor selecciona la unidad de medida: ");
-        System.out.println(Arrays.toString(units));
-        String fromUnit = input.nextLine().toString();
-
-        System.out.println("Por favor selecciona la unidad de medida destino: ");
-        System.out.println(Arrays.toString(units));
-        String toUnit = input.nextLine().toString();
-
-        System.out.println("Por favor ingrese el valor a convertir: ");
-        double value = input.nextDouble();
-
+    public static double distanceConversion(double value, String fromUnit, String toUnit) {
+        double convertedValue = 0;
         try {
             double nValue = Double.parseDouble(String.valueOf(value));
-            double convertedValue = DistanceConverter.convert(nValue,fromUnit,toUnit);
+            convertedValue = DistanceConverter.convert(nValue, fromUnit, toUnit);
+            System.out.println(convertedValue);
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return convertedValue;
+    }
+
+    public static double temperatureConversion(double value, String fromUnit, String toUnit){
+
+        double convertedValue = 0;
+        try {
+            double nValue = Double.parseDouble(String.valueOf(value));
+            convertedValue = TemperatureConverter.convert(nValue,fromUnit,toUnit);
             System.out.println(convertedValue);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
+        return convertedValue;
     }
 
-    public static void temperatureConversion(){
-        Scanner input = new Scanner(System.in);
+    public static double weightConversion(double value, String fromUnit, String toUnit){
 
-        String[] units = {"Celsius: c", "Fahrenheit: f", "Kelvin: k"};
-
-        System.out.println("Por favor selecciona la unidad de medida: ");
-        System.out.println(Arrays.toString(units));
-        String fromUnit = input.nextLine().toUpperCase();
-
-        System.out.println("Por favor selecciona la unidad de medida destino: ");
-        System.out.println(Arrays.toString(units));
-        String toUnit = input.nextLine().toUpperCase();
-
-        System.out.println("Por favor ingrese el valor a convertir: ");
-        double value = input.nextDouble();
-
+        double convertedValue = 0;
         try {
             double nValue = Double.parseDouble(String.valueOf(value));
-            double convertedValue = TemperatureConverter.convert(nValue,fromUnit,toUnit);
+            convertedValue = WeightConverter.convert(nValue,fromUnit,toUnit);
             System.out.println(convertedValue);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
-
+        return convertedValue;
     }
 
-    public static void weightConversion(){
-        Scanner input = new Scanner(System.in);
+    public static double areaConversion(double value, String fromUnit, String toUnit){
 
-        String[] units = {"Gramos: gr","Libras: lb", "Kilos: k", "Onzas: oz", "Toneladas: tn"};
-
-        System.out.println("Por favor selecciona la unidad de medida: ");
-        System.out.println(Arrays.toString(units));
-        String fromUnit = input.nextLine().toLowerCase();
-
-        System.out.println("Por favor selecciona la unidad de medida destino: ");
-        System.out.println(Arrays.toString(units));
-        String toUnit = input.nextLine().toLowerCase();
-
-        System.out.println("Por favor ingrese el valor a convertir: ");
-        double value = input.nextDouble();
-
+        double convertedValue = 0;
         try {
             double nValue = Double.parseDouble(String.valueOf(value));
-            double convertedValue = WeightConverter.convert(nValue,fromUnit,toUnit);
+            convertedValue = AreaConverter.convert(nValue,fromUnit,toUnit);
             System.out.println(convertedValue);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
+        return convertedValue;
     }
+    public static double currencyConversion(double value, String fromUnit, String toUnit){
 
-    public static void areaConversion(){
-        Scanner input = new Scanner(System.in);
-
-        String[] units = {"Milimetros Cadrados: mm2","Centimetros Cuadrados: cm2","Metros Cuadrados: m2","Kilometros Cuadraros: km2", "Pulgadas Cuadradas: in2", "Pies Cuadrados: ft2", "Yardas Cuadradas: yd2", "Millas cuadradas: mi2"};
-
-        System.out.println("Por favor selecciona la unidad de medida: ");
-        System.out.println(Arrays.toString(units));
-        String fromUnit = input.nextLine().toLowerCase();
-
-        System.out.println("Por favor selecciona la unidad de medida destino: ");
-        System.out.println(Arrays.toString(units));
-        String toUnit = input.nextLine().toLowerCase();
-
-        System.out.println("Por favor ingrese el valor a convertir: ");
-        double value = input.nextDouble();
-        input.nextLine();
-
+        double convertedValue = 0;
         try {
             double nValue = Double.parseDouble(String.valueOf(value));
-            double convertedValue = AreaConverter.convert(nValue,fromUnit,toUnit);
+            convertedValue = CurrencyConverter.convert(nValue,fromUnit,toUnit);
             System.out.println(convertedValue);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
-    }
-
-    public static void currencyConversion(){
-        Scanner input = new Scanner(System.in);
-
-        String[] units = {"Dolar: USD","Peso Colombiano: COP ","Dolar Canadience: CAD","Won Sur Coreano: KRW", "Libras Esterlinas: GBP", "Yen Japones: YEN", "Real Brasileño: BRL", "Peso Argentino: ARS"};
-
-        System.out.println("Por favor selecciona la unidad de medida: ");
-        System.out.println(Arrays.toString(units));
-        String fromUnit = input.nextLine().toUpperCase();
-
-        System.out.println("Por favor selecciona la unidad de medida destino: ");
-        System.out.println(Arrays.toString(units));
-        String toUnit = input.nextLine().toUpperCase();
-
-        System.out.println("Por favor ingrese el valor a convertir: ");
-        double value = input.nextDouble();
-        input.nextLine();
-
-        try {
-            double nValue = Double.parseDouble(String.valueOf(value));
-            double convertedValue = CurrencyConverter.convert(nValue,fromUnit,toUnit);
-            System.out.println(convertedValue);
-        }catch (NumberFormatException e){
-            e.printStackTrace();
-        }
+        return convertedValue;
     }
 }

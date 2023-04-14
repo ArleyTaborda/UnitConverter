@@ -11,9 +11,7 @@ public enum Areas {
     mi2("Millas cuadradas");
 
     private String nombre;
-    private Areas(String nombre){
-        this.nombre = nombre;
-    }
+    private Areas(String nombre){this.nombre = nombre;}
 
     public String getNombre(){
         return this.nombre;
