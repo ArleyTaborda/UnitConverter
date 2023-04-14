@@ -195,7 +195,6 @@ public class Window extends JFrame {
                         for (Units unidad : Units.values()) {
                             nombreUnidades.add(unidad.getNombre());
                         }
-                        System.out.println(nombreUnidades);
                         fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         fromUnitBox.setSelectedIndex(0);
@@ -205,8 +204,6 @@ public class Window extends JFrame {
                         for (Temperatures unidad : Temperatures.values()) {
                             nombreUnidades.add(unidad.getNombre());
                         }
-                        System.out.println(nombreUnidades);
-                        System.out.println(fromKey);
                         fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         fromUnitBox.setSelectedIndex(0);
@@ -216,7 +213,6 @@ public class Window extends JFrame {
                         for (Longitudes unidad : Longitudes.values()) {
                             nombreUnidades.add(unidad.getNombre());
                         }
-                        System.out.println(nombreUnidades);
                         fromUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         fromUnitBox.setSelectedIndex(0);
@@ -230,7 +226,6 @@ public class Window extends JFrame {
                         toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         fromUnitBox.setSelectedIndex(0);
                         toUnitBox.setSelectedIndex(0);
-                        System.out.println(nombreUnidades);
                     }
                     case "Peso" -> {
                         for (Pesos unidad : Pesos.values()) {
@@ -240,8 +235,6 @@ public class Window extends JFrame {
                         toUnitBox.setModel(new DefaultComboBoxModel<>(nombreUnidades.toArray(new String[0])));
                         fromUnitBox.setSelectedIndex(0);
                         toUnitBox.setSelectedIndex(0);
-
-                        System.out.println(nombreUnidades);
                     }
                     default -> {
 
@@ -257,8 +250,6 @@ public class Window extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String fromSelectedUnit = (String) fromUnitBox.getSelectedItem();
                 selectedType = (String) ConversionType.getSelectedItem();
-                System.out.println(fromSelectedUnit);
-                System.out.println(selectedType);
 
                 switch (Objects.requireNonNull(selectedType)) {
                     case "Divisas" -> {
@@ -267,7 +258,6 @@ public class Window extends JFrame {
                                 fromUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(fromUnitKey);
                     }
                     case "Temperatura" -> {
                         for (Temperatures unidad : Temperatures.values()) {
@@ -275,7 +265,6 @@ public class Window extends JFrame {
                                 fromUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(fromUnitKey);
                     }
                     case "Longitud" -> {
                         for (Longitudes unidad : Longitudes.values()) {
@@ -283,7 +272,6 @@ public class Window extends JFrame {
                                 fromUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(fromUnitKey);
                     }
                     case "Area" -> {
                         for (Areas unidad : Areas.values()) {
@@ -291,7 +279,6 @@ public class Window extends JFrame {
                                 fromUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(fromUnitKey);
                     }
                     case "Peso" -> {
                         for (Pesos unidad : Pesos.values()) {
@@ -299,7 +286,6 @@ public class Window extends JFrame {
                                 fromUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(fromUnitKey);
                     }
 
                 }
@@ -320,7 +306,6 @@ public class Window extends JFrame {
                                 toUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(toUnitKey);
                     }
                     case "Temperatura" -> {
                         for (Temperatures unidad : Temperatures.values()) {
@@ -328,7 +313,6 @@ public class Window extends JFrame {
                                 toUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(toUnitKey);
                     }
                     case "Longitud" -> {
                         for (Longitudes unidad : Longitudes.values()) {
@@ -336,7 +320,6 @@ public class Window extends JFrame {
                                 toUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(toUnitKey);
                     }
                     case "Area" -> {
                         for (Areas unidad : Areas.values()) {
@@ -344,7 +327,6 @@ public class Window extends JFrame {
                                 toUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(toUnitKey);
                     }
                     case "Peso" -> {
                         for (Pesos unidad : Pesos.values()) {
@@ -352,11 +334,8 @@ public class Window extends JFrame {
                                 toUnitKey = unidad.name();
                             }
                         }
-                        System.out.println(toUnitKey);
                     }
-
                 }
-
             }
         });
         btnConvertir.addActionListener(new ActionListener() {

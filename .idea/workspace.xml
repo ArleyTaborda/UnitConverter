@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d6c2fed-ac59-469e-9c2c-656cdd4a9432" name="Changes" comment="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+    <list default="true" id="9d6c2fed-ac59-469e-9c2c-656cdd4a9432" name="Changes" comment="Programa 100% funcional... faltaría organizar un poco mejor el código y la interfaz gráfica">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/WinViews/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/WinViews/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/WinViews/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/controllers/CurrencyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/models/enums/Areas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/enums/Areas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/models/enums/Pesos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models/enums/Pesos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,14 +76,22 @@
       <option name="project" value="LOCAL" />
       <updated>1680816877490</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Programa 100% funcional... faltaría organizar un poco mejor el código y la interfaz gráfica">
+      <created>1681497633911</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681497633911</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primer commit que contiene los modelos y el controlador" />
     <MESSAGE value="Se agrega interfaz (con diseño temporal)" />
     <MESSAGE value="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se agrega interfaz (con diseño temporal), aun no se llaman las clases de lógica para realizar las conversiones" />
+    <MESSAGE value="Programa 100% funcional... faltaría organizar un poco mejor el código y la interfaz gráfica" />
+    <option name="LAST_COMMIT_MESSAGE" value="Programa 100% funcional... faltaría organizar un poco mejor el código y la interfaz gráfica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
