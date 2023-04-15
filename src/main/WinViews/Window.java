@@ -342,13 +342,13 @@ public class Window extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                DecimalFormat df = new DecimalFormat("#.00");
+                //DecimalFormat df = new DecimalFormat("###,###.##");
                 fromSelection = fromUnitKey;
                 toSelection = toUnitKey;
                 inValue = Float.parseFloat(fromTextArea.getText());
 
                 outVlaue = (float) CurrencyController.convert(selectedType, inValue, fromSelection, toSelection);
-                outVlaue = Float.parseFloat(df.format(outVlaue));
+                //outVlaue = Float.parseFloat((String) df.format(outVlaue));
                 toTextArea.setText(String.valueOf(outVlaue));
 
             }

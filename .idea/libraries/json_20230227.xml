@@ -2,6 +2,7 @@
   <library name="json-20230227">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../dependencies/json-20230227.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/jars/json-20230227.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
